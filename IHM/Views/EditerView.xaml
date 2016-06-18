@@ -1,0 +1,68 @@
+﻿<Window x:Class="IHM.Views.EditerView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IHM.Views"
+        xmlns:converter="clr-namespace:IHM.Converter"
+        mc:Ignorable="d"
+        Height="400" Width="300">
+    <Window.Resources>
+        <converter:Date2StringConverter x:Key="date2StringConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Content="Nom :"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="3,3,5,3" Text="{Binding CompoModifie.Nom}"/>
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Content="Prenom :"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="3,3,5,3" Text="{Binding CompoModifie.Prenom}"/>
+        <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Content="Date de naissance :"/>
+        <DatePicker Grid.Row="2" Grid.Column="1" SelectedDate="{Binding CompoModifie.DateNaissance}" SelectedDateFormat="Long"/>
+        <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Content="Date de décès :"/>
+        <DatePicker Grid.Row="3" Grid.Column="1" SelectedDate="{Binding CompoModifie.DateDeces}" SelectedDateFormat="Long"/>
+        <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="Oeuvres majeures :"/>
+        <!--<TextBox Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,3,5,3" Text="{Binding CompoModifie.Oeuvres}" AcceptsReturn="True"/>-->
+        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="Editer les oeuvres" HorizontalAlignment="Center" Margin="5" Command="{Binding EditerOeuvreCommand}"/>
+        <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Content="Description :"/>
+        <TextBox Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,3,5,3" Text="{Binding CompoModifie.Description}" AcceptsReturn="True" TextWrapping="WrapWithOverflow"/>
+        <Grid Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Content="Photo :"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="3,3,5,3" Text="{Binding CompoModifie.CheminImage}"/>
+            <Button Grid.Row="0" Grid.Column="2"  Content="Parcourir" Margin="5" Command="{Binding ParcourirCommand}" Padding="2"/>
+        </Grid>
+        <Grid Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Content="Valider" Margin="5" Height="40" Width="100" HorizontalAlignment="Right" Command="{Binding ValiderCommand}"/>
+            <Button Grid.Row="0" Grid.Column="1" Content="Annuler" Margin="5" Height="40" Width="100" HorizontalAlignment="Left" Command="{Binding AnnulerCommand}"/>
+        </Grid>
+    </Grid>
+</Window>
